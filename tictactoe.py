@@ -1,5 +1,4 @@
 board = [" " for i in range(9)]
-print(board)
 
 def print_board():
     row_1 = "|{}|{}|{}|".format(board[0],board[1],board[2])
@@ -37,19 +36,34 @@ def check_success(icon):
     else:
         return False
 
+def is_draw():
+    if " " not in board:
+        return True
+    else:
+        return False
+    
+
 while True:
     print_board()
     player_move("X")
-    if check_success("X") == True:
+    if check_success("X"):
         print_board()
-        print("Player 1 won!")
+        print("Player 1 won! Congratulations ....")
+        break
+    else is_draw():
+        print_board()
+        print("cat's game XOXOXOX :(")
         break
 
     print_board()
     player_move("O")
-    if check_success("O") == True:
+    if check_success("O"):
         print_board()
-        print("Player 2 won!")
+        print("Player 2 won! Congratulations ....")
+        break
+    else is_draw():
+        print_board()
+        print("cat's game XOXOXOX :(")
         break
 
 

@@ -25,15 +25,14 @@ def player_move(icon):
         print("already filled! please try again!")
 
 def check_success(icon):
-    if (board[0]==icon and board[1]==icon and board[2]==icon):
-        return True
-    elif (board[3]==icon and board[4]==icon and board[5]==icon):
-        return True
-    elif (board[6]==icon and board[7]==icon and board[8]==icon):
-        return True
-    elif (board[0]==icon and board[4]==icon and board[8]==icon):
-        return True
-    elif (board[2]==icon and board[4]==icon and board[6]==icon):
+    if (board[0]==icon and board[1]==icon and board[2]==icon) or \
+       (board[3]==icon and board[4]==icon and board[5]==icon) or \
+       (board[6]==icon and board[7]==icon and board[8]==icon) or \
+       (board[0]==icon and board[4]==icon and board[8]==icon) or \
+       (board[2]==icon and board[4]==icon and board[6]==icon) or \
+       (board[0]==icon and board[3]==icon and board[6]==icon) or \
+       (board[1]==icon and board[4]==icon and board[7]==icon) or \
+       (board[2]==icon and board[5]==icon and board[8]==icon):
         return True
     else:
         return False
@@ -42,12 +41,14 @@ while True:
     print_board()
     player_move("X")
     if check_success("X") == True:
+        print_board()
         print("Player 1 won!")
         break
 
     print_board()
     player_move("O")
     if check_success("O") == True:
+        print_board()
         print("Player 2 won!")
         break
 
